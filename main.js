@@ -29,7 +29,6 @@ function gotResult(error, results){
         objectDetector.detect(video, gotResult);
         for(i=0; i<objects.length; i++){
             document.getElementById("status").innerHTML="Status: Objetos Detectados";
-            document.getElementById("numberOfObjects").innerHTML="Quantidade de Objetos Detectados: "+ objects.length;
             fill("#FF0000");
             percent= floor(objects[i].confidence*100);
             text(objects[i].label+" "+percent + "%", objects[i].x+15,objects[i].y+15);
@@ -39,7 +38,7 @@ function gotResult(error, results){
             if(objects[i].label==Nome_do_Objeto){
                 video.stop();
                 objectDetector.detect(gotResult);
-                document.getElementById("objectStatus").innerHTML= Nome_do_Objeto+"Encontrado";
+                document.getElementById("numberOfObjects").innerHTML= Nome_do_Objeto+" Encontrado";
                 synth=window.SpeechSynthesisUtterance(Nome_do_Objeto + "Encontrado");
                 synth.speak(utterThis);
             }
